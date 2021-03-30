@@ -1,9 +1,7 @@
-//modules
 const https = require("https");
 const Stream = require('stream').Transform
 const fs = require('fs');
 
-//errors
 class NoCategoryError extends Error {
     /*
     Raised when a given category does not exist in the compendium
@@ -64,19 +62,19 @@ class compendium {
                 - type: function
         */
         https.get(this.url + "/entry/" + String(entry), (resp: any) => {
-                let data = '';
-                resp.on('data', (chunk: string) => {
-                    data += chunk;
-                });
+            let data = '';
+            resp.on('data', (chunk: string) => {
+                data += chunk;
+            });
 
-                resp.on('end', () => {
-                    data=JSON.parse(data)["data"];
-                    if (Object.keys(data).length===0){
-                        throw new NoEntryError(entry)
-                    }
-                    callback(data);
-                })
+            resp.on('end', () => {
+                data=JSON.parse(data)["data"];
+                if (Object.keys(data).length===0){
+                    throw new NoEntryError(entry)
+                }
+                callback(data);
             })
+        })
     }
 
     get_category(category: string, callback: Function){
@@ -130,7 +128,7 @@ class compendium {
             });
 
             resp.on("end", () => {
-                data=JSON.parse(data);
+                data=JSON.parse(data)["data"];
                 callback(data)
             })
         })
@@ -152,16 +150,19 @@ class compendium {
         
         this.get_entry(entry, function(data: any) {
             https.get(data["image"], (resp: any) => {
-				let data = new Stream();
-				resp.on('data', (chunk: string) => {
-					data.push(chunk);
-				});
+                    let data = new Stream();
+                    resp.on('data', (chunk: string) => {
+                        data.push(chunk);
+                    });
 
-				resp.on('end', () => {
-					fs.writeFile(output_file,data.read(), callback)
-				})
-			})
+                    resp.on('end', () => {
+                         fs.writeFile(output_file,data.read(), callback)
+                    })
+               })
         })
-        
     }
 }
+
+exports.NoEntryError = NoEntryError
+exports.NoCategoryError = NoCategoryError
+exports.compendium = compendium

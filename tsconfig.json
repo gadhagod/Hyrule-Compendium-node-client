@@ -1,17 +1,15 @@
 {
-    "compilerOptions": {
-      "target": "es6",
-      "lib": ["esnext", "dom"],
-      "module": "commonjs",
-      "moduleResolution": "node",
-      "strict": true,
-      "jsx": "react",
-      "allowJs": true,
-      "sourceMap": true,
-      "inlineSources": true,
-      "types": ["node"],
-      "allowSyntheticDefaultImports": true,
-      "experimentalDecorators": true
-    }
-  }
-  
+  "compilerOptions": {
+    "target": "es5",
+    "module": "commonjs",
+    "lib": ["es2017", "es7", "es6", "dom"],
+    "declaration": true,
+    "outDir": "dist",
+    "strict": true,
+    "esModuleInterop": true
+  },
+  "exclude": [
+    "node_modules",
+    "dist"
+  ]
+}
