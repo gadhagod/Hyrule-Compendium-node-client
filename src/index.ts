@@ -48,11 +48,12 @@ class compendium {
     */
 
     url: string
-    constructor(url="https://botw-compendium.herokuapp.com/api/v2"){
+    constructor(url="https://botw-compendium.herokuapp.com/api/v2", defaultTimeout: number=10000){
         this.url=url;
+        this.defaultTimeout=defautTimeout
     }
 
-    get_entry(entry: string | number, callback: Function){
+    get_entry(entry: string | number, callback: Function, timeout: number=this.defaultTimeout, errorCallback: Function=function(k){throw k}){
         /*
         Gets an entry from the compendium.
         Parameters:
@@ -61,7 +62,7 @@ class compendium {
             * `callback`: Function to be executed with metadata on the entry.
                 - type: function
         */
-        https.get(this.url + "/entry/" + String(entry), (resp: any) => {
+        req = https.get(this.url + "/entry/" + String(entry), (resp: any) => {
             let data = '';
             resp.on('data', (chunk: string) => {
                 data += chunk;
@@ -74,10 +75,11 @@ class compendium {
                 }
                 callback(data);
             })
-        })
+        }).on("error", errorCallback)
+        req.on("timeout",req.destroy)
     }
 
-    get_category(category: string, callback: Function){
+    get_category(category: string, callback: Function, timeout: number=this.defaultTimeout, errorCallback: Function=function(k){throw k}){
         /*
         Gets all entries from a category in the compendium.
 
@@ -96,7 +98,7 @@ class compendium {
         )){
             throw new NoCategoryError(category)
         }
-        https.get(this.url + "/category/" + String(category), (resp: any) => {
+        req = https.get(this.url + "/category/" + String(category), (resp: any) => {
             let data = '';
             resp.on("data", (chunk: string) => {
                 data += chunk;
@@ -109,10 +111,11 @@ class compendium {
                 }
                 callback(data);
             })
-        })
+        }).on("error", errorCallback)
+        req.on("timeout",req.destroy)
     }
 
-    get_all(callback: Function){
+    get_all(callback: Function, timeout: number=this.defaultTimeout, errorCallback: Function=function(k){throw k}){
         /*
         Get all entries from the compendium.
 
@@ -131,10 +134,11 @@ class compendium {
                 data=JSON.parse(data)["data"];
                 callback(data)
             })
-        })
+        }).on("error", errorCallback)
+        req.on("timeout",req.destroy)
     }
 
-    download_entry_image(entry: string | number, output_file: string, callback=function(){}){
+    download_entry_image(entry: string | number, output_file: string, callback=function(){},timeout: number=this.defaultTimeout, errorCallback: Function=function(k){throw k}){
         /*
         Download the image of a compendium entry.
 
@@ -158,8 +162,9 @@ class compendium {
                     resp.on('end', () => {
                          fs.writeFile(output_file,data.read(), callback)
                     })
-               })
-        })
+               }).on("error", errorCallback)
+            req.on("timeout",req.destroy)
+        },timeout,errorCallback)
     }
 }
 
