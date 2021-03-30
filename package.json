@@ -1,0 +1,23 @@
+{
+  "name": "hyrule-compendium",
+  "version": "1.0.0",
+  "description": "The official nodejs client for the Hyrule Compendium API",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/goombamaui/Hyrule-Compendium-node-client.git"
+  },
+  "author": "Aarush Valaiya, Aarav Borthakur",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/goombamaui/Hyrule-Compendium-node-client/issues"
+  },
+  "homepage": "https://github.com/goombamaui/Hyrule-Compendium-node-client",
+  "devDependencies": {
+    "tslint": "^5.12.1",
+    "typescript": "^3.3.3"
+  }
+}
