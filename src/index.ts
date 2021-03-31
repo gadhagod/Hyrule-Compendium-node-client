@@ -64,13 +64,14 @@ class compendium {
             * `callback`: Function to be executed with metadata on the entry.
                 - type: function
         */
+
         let req = https.get(this.url + "/entry/" + String(entry), (resp: any) => {
-            let data = '';
-            resp.on('data', (chunk: string) => {
+            let data = "";
+            resp.on("data", (chunk: string) => {
                 data += chunk;
             });
 
-            resp.on('end', () => {
+            resp.on("end", () => {
                 data=JSON.parse(data)["data"];
                 if (Object.keys(data).length===0){
                     throw new NoEntryError(entry)
