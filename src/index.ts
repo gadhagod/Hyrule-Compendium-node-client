@@ -48,12 +48,14 @@ class compendium {
     */
 
     url: string
-    constructor(url="https://botw-compendium.herokuapp.com/api/v2", defaultTimeout: number=10000){
+    default_timeout: number
+
+    constructor(url="https://botw-compendium.herokuapp.com/api/v2", default_timeout=10000){
         this.url=url;
-        this.defaultTimeout=defautTimeout
+        this.default_timeout=default_timeout
     }
 
-    get_entry(entry: string | number, callback: Function, timeout: number=this.defaultTimeout, errorCallback: Function=function(k){throw k}){
+    get_entry(entry: string | number, callback: Function, timeout: number=this.default_timeout, error_callback: Function=function(err: any){throw err}){
         /*
         Gets an entry from the compendium.
         Parameters:
@@ -62,7 +64,7 @@ class compendium {
             * `callback`: Function to be executed with metadata on the entry.
                 - type: function
         */
-        req = https.get(this.url + "/entry/" + String(entry), (resp: any) => {
+        let req = https.get(this.url + "/entry/" + String(entry), (resp: any) => {
             let data = '';
             resp.on('data', (chunk: string) => {
                 data += chunk;
@@ -75,11 +77,11 @@ class compendium {
                 }
                 callback(data);
             })
-        }).on("error", errorCallback)
-        req.on("timeout",req.destroy)
+        }).on("error", error_callback)
+        req.on("timeout", req.destroy)
     }
 
-    get_category(category: string, callback: Function, timeout: number=this.defaultTimeout, errorCallback: Function=function(k){throw k}){
+    get_category(category: string, callback: Function, timeout: number=this.default_timeout, error_callback: Function=function(err: any){throw err}){
         /*
         Gets all entries from a category in the compendium.
 
@@ -98,7 +100,7 @@ class compendium {
         )){
             throw new NoCategoryError(category)
         }
-        req = https.get(this.url + "/category/" + String(category), (resp: any) => {
+        let req = https.get(this.url + "/category/" + String(category), (resp: any) => {
             let data = '';
             resp.on("data", (chunk: string) => {
                 data += chunk;
@@ -111,11 +113,11 @@ class compendium {
                 }
                 callback(data);
             })
-        }).on("error", errorCallback)
-        req.on("timeout",req.destroy)
+        }).on("error", error_callback)
+        req.on("timeout", req.destroy)
     }
 
-    get_all(callback: Function, timeout: number=this.defaultTimeout, errorCallback: Function=function(k){throw k}){
+    get_all(callback: Function, timeout: number=this.default_timeout, error_callback: Function=function(err: any){throw err}){
         /*
         Get all entries from the compendium.
 
@@ -124,7 +126,7 @@ class compendium {
                 - type: function
         */
 
-        https.get(this.url, (resp: any) => {
+        let req = https.get(this.url, (resp: any) => {
             let data = "";
             resp.on("data", (chunk: string) => {
                 data += chunk;
@@ -134,11 +136,11 @@ class compendium {
                 data=JSON.parse(data)["data"];
                 callback(data)
             })
-        }).on("error", errorCallback)
-        req.on("timeout",req.destroy)
+        }).on("error", error_callback)
+        req.on("timeout", req.destroy)
     }
 
-    download_entry_image(entry: string | number, output_file: string, callback=function(){},timeout: number=this.defaultTimeout, errorCallback: Function=function(k){throw k}){
+    download_entry_image(entry: string | number, output_file: string, callback=function(){},timeout: number=this.default_timeout, error_callback: Function=function(err: any){throw err}){
         /*
         Download the image of a compendium entry.
 
@@ -153,7 +155,7 @@ class compendium {
         */
         
         this.get_entry(entry, function(data: any) {
-            https.get(data["image"], (resp: any) => {
+            let req = https.get(data["image"], (resp: any) => {
                     let data = new Stream();
                     resp.on('data', (chunk: string) => {
                         data.push(chunk);
@@ -162,9 +164,9 @@ class compendium {
                     resp.on('end', () => {
                          fs.writeFile(output_file,data.read(), callback)
                     })
-               }).on("error", errorCallback)
+               }).on("error", error_callback)
             req.on("timeout",req.destroy)
-        },timeout,errorCallback)
+        }, timeout, error_callback)
     }
 }
 
