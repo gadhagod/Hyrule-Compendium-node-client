@@ -12,4 +12,10 @@ Install development build (not recommended):
     npm i git+https://github.com/gadhagod/Hyrule-Compendium-node-client.git
 
 ## Usage
-See examples in the examples directory for some basic usage. See code comments for detailed documentation.
+Check the [documentation](https://gadhagod.github.io/Hyrule-Compendium-API/#/client-libraries/node?id=node-wrapper) for guidance.
+
+## Other info
+Contributions are welcome! \
+The libary's source is MIT-licensed. \
+The examples are [WTFPL](https://en.wikipedia.org/wiki/WTFPL)-licensed. \
+This library is maintaned by Aarav Borthakur ([@gadhagod](https://github.com/gadhagod)) and Aarush Valaiya ([@goombamaui](https://github.com/goombamaui)).
