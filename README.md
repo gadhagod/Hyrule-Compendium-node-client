@@ -17,5 +17,4 @@ Check the [documentation](https://gadhagod.github.io/Hyrule-Compendium-API/#/cli
 ## Other info
 Contributions are welcome! \
 The libary's source is MIT-licensed. \
-The examples are [WTFPL](https://en.wikipedia.org/wiki/WTFPL)-licensed. \
 This library is maintaned by Aarav Borthakur ([@gadhagod](https://github.com/gadhagod)) and Aarush Valaiya ([@goombamaui](https://github.com/goombamaui)).
