@@ -167,7 +167,7 @@ class compendium {
                 - type: str, int
             * `output_file`: The output file's path.
                 - type: str
-                - default: entry's name with a ".png" extension
+                - default: entry's name with a ".png" extension with spaces replaced with underscores
             * `callback`: The function to executed with image binary
                 type: function
                 default: `function(){}` (empty function)
@@ -187,13 +187,16 @@ class compendium {
                     });
         
                     resp.on("end", () => {
-                        fs.writeFile(output_file ?? data["name"]+".png", strm.read(), callback)
+                        fs.writeFile(output_file ?? (data["name"]+".png").replace(" ", "_"), strm.read(), callback)
                     })
                }).on("error", error_callback)
             req.on("timeout", req.destroy)
         }, timeout, error_callback)
     }
 }
+
+let x = new compendium
+x.download_entry_image("ice keese")
 
 exports.NoEntryError = NoEntryError
 exports.NoCategoryError = NoCategoryError
