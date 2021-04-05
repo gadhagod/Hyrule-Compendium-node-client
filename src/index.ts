@@ -158,7 +158,7 @@ class compendium {
         req.setTimeout(timeout, req.destroy);
     }
 
-    download_entry_image(entry: string|number, output_file: string, callback=function(){}, timeout: number=this.default_timeout, error_callback: Function=function(err: any){throw err}){
+    download_entry_image(entry: string|number, output_file: string|null=null, callback=function(){}, timeout: number=this.default_timeout, error_callback: Function=function(err: any){throw err}){
         /*
         Download the image of a compendium entry.
 
@@ -167,6 +167,7 @@ class compendium {
                 - type: str, int
             * `output_file`: The output file's path.
                 - type: str
+                - default: entry's name with a ".png" extension
             * `callback`: The function to executed with image binary
                 type: function
                 default: `function(){}` (empty function)
@@ -180,13 +181,13 @@ class compendium {
         
         this.get_entry(entry, function(data: any) {
             let req = https.get(data["image"], (resp: any) => {
-                    let data = new Stream();
+                    let strm = new Stream();
                     resp.on("data", (chunk: string) => {
-                        data.push(chunk);
+                        strm.push(chunk);
                     });
-
+        
                     resp.on("end", () => {
-                        fs.writeFile(output_file,data.read(), callback)
+                        fs.writeFile(output_file ?? data["name"]+".png", strm.read(), callback)
                     })
                }).on("error", error_callback)
             req.on("timeout", req.destroy)
