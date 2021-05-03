@@ -17,4 +17,4 @@ Check the [documentation](https://gadhagod.github.io/Hyrule-Compendium-API/#/cli
 ## Other info
 Contributions are welcome! \
 The libary's source is MIT-licensed. \
-This library is maintaned by Aarav Borthakur ([@gadhagod](https://github.com/gadhagod)) and Aarush Valaiya ([@goombamaui](https://github.com/goombamaui)).
+This library is maintaned by Aarav Borthakur ([@gadhagod](https://github.com/gadhagod)) and Aarush Vailaya ([@goombamaui](https://github.com/goombamaui)).
