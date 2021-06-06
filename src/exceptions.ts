@@ -1,4 +1,4 @@
-class NoCategoryError extends Error {
+export class NoCategoryError extends Error {
     /*
     Raised when a given category does not exist in the compendium
 
@@ -6,13 +6,12 @@ class NoCategoryError extends Error {
         * `target_category`: Non-existant input category that causes error.
             - type: string
     */
-
     constructor(target_category: string) {
         super("Category '" + String(target_category) + "' not found. Available categories are 'creatures', 'equipment', 'materials', 'monsters', or 'treasure'")
     }
 }
 
-class NoEntryError extends Error {
+export class NoEntryError extends Error {
     /*
     Raised when a given entry does not exist in the compendium
 
@@ -20,7 +19,6 @@ class NoEntryError extends Error {
         * `target_entry`: Non-existant input entry that causes error.
             - type: string
     */
-
     constructor(target_entry: string|number){
         if (typeof(target_entry) == "number"){
             super("Entry with ID "+ String(target_entry) + " not found.")
@@ -31,5 +29,3 @@ class NoEntryError extends Error {
         }
     }
 }
-
-export { NoEntryError, NoCategoryError};
