@@ -1,43 +1,206 @@
+/**
+ * @interface BaseEntry Contains attributes which all entries have
+ */
 interface BaseEntry {
-    category: string
-    common_locations: string[]
-    description: string
-    id: number
-    name: string
-    image: string
+    /**
+     * Name of the category of the entry
+     * @type {string}
+     * @memberof BaseEntry
+     * @readonly
+     */
+    readonly category: string
+    /**
+     * Common locations of entry
+     * @type {string[]}
+     * @memberof BaseEntry
+     * @readonly
+     */
+    readonly common_locations: string[]
+    /**
+     * Description of entry
+     * @type {string}
+     * @memberof BaseEntry
+     * @readonly
+     */
+    readonly description: string
+    /**
+     * ID of entry
+     * @type {number}
+     * @memberof BaseEntry
+     * @readonly
+     */
+    readonly id: number
+    /**
+     * Name of entry
+     * @type {string}
+     * @memberof BaseEntry
+     * @readonly
+     */
+    readonly name: string
+    /**
+     * Image of entry as a link, can be downloaded with `compendium.download_entry_image`
+     * @type {string}
+     * @memberof BaseEntry
+     * @readonly
+     */
+    readonly image: string
 }
-
+/**
+ * @interface CreatureEntry An entry of the "creatures" category
+ * @extends BaseEntry
+ */
 export interface CreatureEntry extends BaseEntry {
-    drops?: string
-    hearts_recovered?: number
-    cooking_effect?: string
+    /**
+     * Entry' drops when defeated, attribute only exists on entries of sub-category 'non_food'
+     * @type {?string[]}
+     * @memberof CreatureEntry
+     * @readonly
+     */
+    readonly drops?: string[]
+    /**
+     * Entry' hearts recovered when eaten, attribute only exists on entries of sub-category 'food'
+     * @type {?number}
+     * @memberof CreatureEntry
+     * @readonly
+     */
+    readonly hearts_recovered?: number
+    /**
+     * Entry' cooking effect when eaten after cooked
+     * @type {?("extra hearts" | "stamina recovery" | "heat resistance" | "cold resistance" | "shock resistance" | "stealth up" | "attack up" | "defense up" | "flame guard" | "speed up" | "extra stamina")}
+     * @memberof CreatureEntry
+     * @readonly
+     */
+    readonly cooking_effect?: "" |
+        "extra hearts" |
+        "stamina recovery" |
+        "heat resistance" |
+        "cold resistance" |
+        "shock resistance" |
+        "stealth up" |
+        "attack up" |
+        "defense up" |
+        "flame guard" |
+        "speed up" |
+        "extra stamina"
 }
-
+/**
+ * @interface EquipmentEntry An entry of the "equipment" category
+ * @extends BaseEntry
+ */
 export interface EquipmentEntry extends BaseEntry {
-    attack: number
-    defense: number
+    /**
+     * Damage done of entry when attacked with
+     * @type {number}
+     * @memberof EquipmentEntry
+     * @readonly
+     */
+    readonly attack: number
+    /**
+     * Defense points of entry
+     * @type {number}
+     * @memberof EquipmentEntry
+     * @readonly
+     */
+    readonly defense: number
 }
-
+/**
+ * @interface MaterialEntry An entry of "materials" category
+ * @extends BaseEntry
+ */
 export interface MaterialEntry extends BaseEntry {
-    hearts_recovered: number
+    /**
+     * Hearts recovered of entery when eaten
+     * @type {number}
+     * @memberof MaterialEntry
+     * @readonly
+     */
+    readonly hearts_recovered: number
 }
-
+/**
+ * @interface MonsterEntry An entry of "monsters" category
+ * @extends BaseEntry
+ */
 export interface MonsterEntry extends BaseEntry {
-    drops: string[]
+    /**
+     * Entry's materials dropped when defeaten.
+     * @type {string[]}
+     * @memberof MonsterEntry
+     * @readonly
+     */
+    readonly drops: string[]
 }
-
+/**
+ * @interface TreasureEntry An entry of "treasure" category
+ * @extends BaseEntry
+ */
 export interface TreasureEntry extends BaseEntry {
-    drops: string[]
+    /**
+     * Entry's materials dropped when broken open.
+     * @type {string[]}
+     * @memberof TreasureEntry
+     * @readonly
+     */
+    readonly drops: string[]
 }
-
+/**
+ * @alias AnyEntry Represents an entry of any category
+ */
 export type AnyEntry = CreatureEntry | EquipmentEntry | MaterialEntry | MonsterEntry | TreasureEntry
-
+/**
+ * @alias AnyCategory Represents any category
+ */
+export type AnyCategory = AnyEntry[] | {food: AnyEntry[], non_food: AnyEntry[]}
+/**
+ * @interface EntryCallback Callback function for `compendium.get_entry`
+ */
 export interface EntryCallback {
-    (data: AnyEntry): void
+    /**
+     * @type {void}
+     * @memberof EntryCallback
+     */
+    (
+        /**
+         * @param {AnyEntry} data API data
+         */
+        data: AnyEntry
+    ): void
 }
-
-export function type_category(category_data: {food: CreatureEntry[], non_food: CreatureEntry[]} | AnyEntry[]): AnyEntry {
-    console.log(Object.keys(category_data as any))
+/**
+ * @interface CategoryCallback Callback function for `compendium.get_category`
+ */
+export interface CategoryCallback {
+    /**
+     * @type {void}
+     * @memberof CategoryCallback
+     */
+    (
+        /**
+         * @param {AnyCategory} data API data
+         */
+        data: AnyCategory
+    ): void
+}
+/**
+ * @interface AllCallback Callback function for `compendium.get_all`
+ */
+ export interface AllCallback {
+     /**
+      * @type {void}
+      * @memberof AllCallback
+      */
+    (
+        /**
+         * @param {AnyCategory[]} data API data
+         */
+        data: AnyCategory[]
+    ): void
+}
+/** 
+ * Converts items of a category to their respective data types
+ * @param category_data API response of category
+ * @returns {AnyCategory}
+ */
+export function type_category(category_data: AnyCategory): AnyCategory {
     let res: any = []
     if (Object.keys(category_data).length===2) {
         res = category_data as {food: CreatureEntry[], non_food: CreatureEntry[]}

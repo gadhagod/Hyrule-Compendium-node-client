@@ -1,49 +1,36 @@
 import { NoEntryError, NoCategoryError } from "./exceptions";
-import { AnyEntry, CreatureEntry, EntryCallback, EquipmentEntry, MaterialEntry, MonsterEntry, TreasureEntry, type_category } from "./types"
+import { AllCallback, AnyEntry, CategoryCallback, CreatureEntry, EntryCallback, EquipmentEntry, MaterialEntry, MonsterEntry, TreasureEntry, type_category } from "./types"
 
 const https = require("https");
 const Stream = require("stream").Transform
 const fs = require("fs");
 
+/**
+ * Base class for hyrule-compendium
+ * @param {string} [url=https://botw-compendium.herokuapp.com/api/v2] Base URL for API
+ * @param {number} [default_timeout=20000] Default milliseconds to wait for response for all API calling functions until error
+ */
 export class compendium {
-    /*
-    Base class for hyrule-compendium.
-
-    Parameters:
-        * `url`: The base URL for the API.
-            - default: "https://botw-compendium.herokuapp.com/api/v2"
-            - type: string
-        * `default_timeout`: Default milliseconds to wait for response for all API calling functions until executing `error_callback`.
-    */
-
     url: string
     default_timeout: number
-    constructor(default_timeout=10000, url="https://botw-compendium.herokuapp.com/api/v2"){
+    constructor(default_timeout=20000, url="https://botw-compendium.herokuapp.com/api/v2"){
         this.default_timeout=default_timeout
         this.url=url;
     }
-
+    /**
+     * Gets an entry
+     * @param {string | number} entry The entry to be retrieved
+     * @param {EntryCallback} callback Function to be executed with API data
+     * @param {number} [timeout=this.default_timeout] Time to wait for response before executing @param `error_callback`
+     * @param {Function} [error_callback=(err: any)=>{throw(err)]
+     * @throws {NoEntryError} Entry must exist
+     */
     get_entry(
         entry: string|number, 
         callback: EntryCallback, 
         timeout: number=this.default_timeout, 
         error_callback: Function=(err: any)=>{throw(err)}
     ) {
-        /*
-        Gets an entry from the compendium.
-        Parameters:
-            * `entry`: The entry to be retrieved.
-                - type: string, int
-            * `callback`: Function to be executed with metadata on the entry.
-                - type: function
-            * `timeout`: Milliseconds to wait for response until executing `error_callback`.
-                - type: number
-                - default: `this.default_timeout`
-            * `error_callback`: Function to be executed on request errors.
-                - type: function
-                - default: Throws error
-        */
-
         let req = https.get(this.url + "/entry/" + String(entry), (resp: any) => {
             let data = "";
             resp.on("data", (chunk: string) => {
@@ -73,37 +60,19 @@ export class compendium {
         }).on("error", error_callback)
         req.setTimeout(timeout, req.destroy);
     }
-
+    /**
+     * Gets all entries from a category
+     * @param {"creatures" | "equipment" | "equipment" | "materials" | "monsters" | "treasure"} category Name of category
+     * @param {CategoryCallback} callback Function to be executed with all entries in the category.
+     * @param {number} [timeout=this.default_timeout] Time to wait for response before executing @param `error_callback`
+     * @param {Function} [error_callback=(err: any)=>{throw(err)]
+     */
     get_category(
-        category: string, 
-        callback: Function, 
+        category: "creatures" | "equipment" | "equipment" | "materials" | "monsters" | "treasure", 
+        callback: CategoryCallback, 
         timeout: number=this.default_timeout, 
         error_callback: Function=(err: any)=>{throw err}
     ) {
-        /*
-        Gets all entries from a category in the compendium.
-
-        Parameters:
-            * `category`: The name of the category to be retrieved. Must be one of the compendium categories.
-                - type: string
-                - notes: must be in ["creatures", "equipment", "materials", "monsters", "treasure"]
-            * `callback`: Function to be executed with all entries in the category.
-                - type: function
-            * `timeout`: Milliseconds to wait for response until executing `error_callback`.
-                - type: number
-                - default: `this.default_timeout`
-            * `error_callback`: Function to be executed on request errors.
-                - type: function
-                - default: Throws error
-        
-        Notes: the response schema of `creatures` is different from the others, as it has two sub categories: food and non_food
-        */
-
-        if (!(
-            ["creatures", "equipment", "materials", "monsters", "treasure"].includes(category)
-        )){
-            throw new NoCategoryError(category)
-        }
         let req = https.get(this.url + "/category/" + String(category), (resp: any) => {
             let data = "";
             resp.on("data", (chunk: string) => {
@@ -120,26 +89,17 @@ export class compendium {
         }).on("error", error_callback)
         req.setTimeout(timeout, req.destroy);
     }
-
+    /**
+     * Gets all entries
+     * @param {AllCallback} callback Function to be executed with all entries
+     * @param {number} timeout Time to wait for response before executing @param `error_callback`
+     * @param {Function} [error_callback=(err: any)=>{throw(err)]
+     */
     get_all(
-        callback: Function, 
+        callback: AllCallback, 
         timeout: number=this.default_timeout, 
         error_callback: Function=(err: any)=>{throw err}
     ){
-        /*
-        Get all entries from the compendium.
-
-        Parameters:
-            * `callback`: Function to be executed with all items in the compendium with their metadata, nested in categories.
-                - type: function
-            * `timeout`: Milliseconds to wait for response until executing `error_callback`.
-                - type: number
-                - default: `this.default_timeout`
-            * `error_callback`: Function to be executed on request errors.
-                - type: function
-                - default: Throws error
-        */
-
         let req = https.get(this.url, (resp: any) => {
             let data = "";
             resp.on("data", (chunk: string) => {
@@ -148,7 +108,6 @@ export class compendium {
 
             resp.on("end", () => {
                 let allData = (JSON.parse(data)["data"])
-                console.log(typeof(allData))
                 for (const categoryName in allData) {
                     allData[categoryName] = type_category(allData[categoryName])
                 }
@@ -157,34 +116,21 @@ export class compendium {
         }).on("error", error_callback)
         req.setTimeout(timeout, req.destroy)
     }
-
+    /**
+     * Downloads the image of an entry
+     * @param {string | number} entry ID or name of entry
+     * @param {string} [output_file] File path of which image is to saved, default: "./[entry name].png"
+     * @param {Function} [callback=(err: any)=>{throw err}] param callback of https://nodejs.org/api/fs.html#fs_fs_writefile_file_data_options_callback
+     * @param {number} timeout Time to wait for response before executing @param `error_callback`
+     * @param {Function} error_callback 
+     */
     download_entry_image(
         entry: string|number, 
-        output_file: string|null=null, 
-        callback=function(){}, 
+        output_file?: string, 
+        callback: Function=(err: any)=>{throw err},
         timeout: number=this.default_timeout, 
         error_callback: Function=(err: any)=>{throw err}
-    ) {
-        /*
-        Download the image of a compendium entry.
-
-        Parameters:
-            * `entry`: The ID or name of the entry of the image to be downloaded.
-                - type: str, int
-            * `output_file`: The output file's path.
-                - type: str
-                - default: entry's name with a ".png" extension with spaces replaced with underscores
-            * `callback`: The function to executed with image binary
-                type: function
-                default: `function(){}` (empty function)
-            * `timeout`: Milliseconds to wait for server response until executing `error_callback`.
-                - type: number
-                - default: `this.default_timeout`
-            * `error_callback`: Function to be executed on request errors.
-                - type: function
-                - default: Throws error
-        */
-        
+    ) { 
         this.get_entry(entry, (data: any) => {
             let req = https.get(data["image"], (resp: any) => {
                     let strm = new Stream();

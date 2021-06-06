@@ -6,5 +6,9 @@ export {
     MaterialEntry, 
     MonsterEntry, 
     TreasureEntry,
-    AnyEntry
+    AnyEntry,
+    AnyCategory,
+    AllCallback,
+    CategoryCallback,
+    EntryCallback
 } from "./types"
