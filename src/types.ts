@@ -149,7 +149,7 @@ export type AnyEntry = CreatureEntry | EquipmentEntry | MaterialEntry | MonsterE
 /**
  * @alias AnyCategory Represents any category
  */
-export type AnyCategory = AnyEntry[] | {food: AnyEntry[], non_food: AnyEntry[]}
+export type AnyCategory = AnyEntry[] | {food: CreatureEntry[], non_food: CreatureEntry[]}
 /**
  * @interface EntryCallback Callback function for `compendium.get_entry`
  */
@@ -192,7 +192,13 @@ export interface CategoryCallback {
         /**
          * @param {AnyCategory[]} data API data
          */
-        data: AnyCategory[]
+         data: {
+            creatures: {food: AnyEntry[], non_food: AnyEntry[]},
+            equipment: EquipmentEntry[],
+            materials: MaterialEntry[],
+            monsters: MonsterEntry[],
+            treasure: TreasureEntry[]
+        }
     ): void
 }
 /** 
