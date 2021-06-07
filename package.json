@@ -1,6 +1,6 @@
 {
   "name": "hyrule-compendium",
-  "version": "1.3.1",
+  "version": "1.4.0",
   "description": "The official nodejs client for the Hyrule Compendium API",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -20,5 +20,6 @@
   "homepage": "https://github.com/goombamaui/Hyrule-Compendium-node-client",
   "devDependencies": {
     "typescript": "^3.3.3"
-  }
+  },
+  "files": ["dist/**/*"]
 }
