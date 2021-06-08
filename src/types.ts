@@ -1,3 +1,5 @@
+import { Transform } from "stream"
+
 /**
  * @interface BaseEntry Contains attributes which all entries have
  */
@@ -223,4 +225,19 @@ export function type_category(category_data: AnyCategory): AnyCategory {
         }
     }
     return res
+}
+/**
+ * Callback for `compendium.entry_image.get_stream` @param callback
+ */
+export interface ImageGetStreamCallback {
+    /**
+     * @type {void}
+     * @memberof ImageGetStreamCallback
+     */
+    (
+        /**
+         * @param {Transform} stream Image data
+         */
+        stream: Transform
+    ): void
 }
