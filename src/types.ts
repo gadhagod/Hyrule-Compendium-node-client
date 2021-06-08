@@ -145,6 +145,10 @@ export interface TreasureEntry extends BaseEntry {
     readonly drops: string[]
 }
 /**
+ * @alias EntryType Represents the type of an entry
+ */
+export type EntryType = string | number
+/**
  * @alias AnyEntry Represents an entry of any category
  */
 export type AnyEntry = CreatureEntry | EquipmentEntry | MaterialEntry | MonsterEntry | TreasureEntry

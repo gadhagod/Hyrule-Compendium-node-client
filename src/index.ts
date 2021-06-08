@@ -11,5 +11,6 @@ export {
     AllCallback,
     CategoryCallback,
     EntryCallback,
-    ImageGetStreamCallback
+    ImageGetStreamCallback,
+    EntryType
 } from "./types"
