@@ -1,5 +1,6 @@
-import { Transform } from "stream"
-
+import { Transform } from "stream";
+const fs = require("fs");
+const https = require("https");
 /**
  * @interface BaseEntry Contains attributes which all entries have
  */
@@ -244,4 +245,70 @@ export interface ImageGetStreamCallback {
          */
         stream: Transform
     ): void
+}
+/**
+ * Represents the image of an entry.
+ * @param {compendium} compendium_instance Instance of `compendium`
+ * @param {EntryType} entry ID or name of entry
+ */
+export class EntryImage {
+    compendium_instance: any
+    entry: EntryType
+    constructor(compendium_instance: any, entry: EntryType) {
+        this.compendium_instance = compendium_instance
+        this.entry = entry
+    }
+    /**
+     * Gets the `stream.Transform` object of image, useful for file uploads
+     * @param {ImageGetStreamCallback} callback Function to be executed with image
+     * @param {number} timeout Time to wait for response before executing @param error_callback
+     * @param {Function} [error_callback=(err)=>{throw(err)] Function to be executed on error
+     */
+    get_stream(
+        callback: ImageGetStreamCallback,
+        timeout: number=this.compendium_instance.default_timeout, 
+        error_callback: Function=(err: any)=>{throw err}
+    ) {
+        this.compendium_instance.get_entry(this.entry, (data: any) => {
+            let req = https.get(data["image"], (resp: any) => {
+                    let strm = new Transform();
+                    resp.on("data", (chunk: string) => {
+                        strm.push(chunk);
+                    });
+        
+                    resp.on("end", () => {
+                        callback(strm)
+                    })
+            }).on("error", error_callback)
+            req.on("timeout", req.destroy)
+        }, timeout, error_callback)
+    }
+    /**
+     * Downloads the image of an entry
+     * @param {EntryType} entry ID or name of entry
+     * @param {string} [output_file] File path of which image is to saved, default: "./[entry name].png"
+     * @param {Function} [callback=(err)=>{throw err}] @param callback of https://nodejs.org/api/fs.html#fs_fs_writefile_file_data_options_callback
+     * @param {number} timeout Time to wait for response before executing @param error_callback
+     * @param {Function} [error_callback=(err)=>{throw(err)] Function to be executed on error
+     */
+    download(
+        output_file?: string, 
+        callback: Function=()=>{},
+        timeout: number=this.compendium_instance.default_timeout, 
+        error_callback: Function=(err: any)=>{throw err}
+    ) { 
+        this.compendium_instance.get_entry(this.entry, (data: any) => {
+            let req = https.get(data["image"], (resp: any) => {
+                    let strm = new Transform();
+                    resp.on("data", (chunk: string) => {
+                        strm.push(chunk);
+                    });
+        
+                    resp.on("end", () => {
+                        fs.writeFile(output_file ?? (data["name"]+".png").replace(" ", "_"), strm.read(), callback)
+                    })
+            }).on("error", error_callback)
+            req.on("timeout", req.destroy)
+        }, timeout, error_callback)
+    }
 }

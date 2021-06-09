@@ -1,4 +1,6 @@
-export { compendium } from "./api"
+import { compendium } from "./api"
+export { compendium }
+export default compendium
 export { NoCategoryError, NoEntryError } from "./exceptions"
 export { 
     CreatureEntry, 
@@ -12,5 +14,6 @@ export {
     CategoryCallback,
     EntryCallback,
     ImageGetStreamCallback,
-    EntryType
+    EntryType,
+    EntryImage
 } from "./types"
