@@ -29,7 +29,7 @@ jobs:
         run: |
           cd Hyrule-Compendium-node-client
           npm i
-          npm i -g jsdoc-to-markdown
+          sudo npm i -g jsdoc-to-markdown
 
       - name: Build documentation
         run: |
