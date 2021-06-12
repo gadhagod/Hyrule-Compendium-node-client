@@ -6,6 +6,7 @@ on:
   push:
       branches:
         - master
+        - doc-generator
       paths:
         - 'src/api.ts'
 
