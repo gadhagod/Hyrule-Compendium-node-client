@@ -118,5 +118,5 @@ dist
 # lock files
 package-lock.json
 
-# custom
-idnex.js
+# docs
+docs/index.md
