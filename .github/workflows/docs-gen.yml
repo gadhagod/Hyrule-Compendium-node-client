@@ -1,0 +1,44 @@
+# This workflow generates stashes documentation in `docs` branch
+
+name: Generate Docs
+
+on:
+  push:
+      branches:
+        - master
+      paths:
+        - 'src/api.ts'
+
+jobs:
+  main:
+
+      runs-on: ubuntu-latest
+
+      steps:
+      - uses: actions/checkout@v2
+        with:
+          ref: docs
+
+      - name: Clone master branch
+        run: |
+          git clone https://github.com/gadhagod/Hyrule-Compendium-node-client
+
+      - name: Install dependencies
+        run: |
+          cd Hyrule-Compendium-node-client
+          npm i
+          npm i -g jsdoc-to-markdown
+
+      - name: Build documentation
+        run: |
+          cd Hyrule-Compendium-node-client
+          npm run build:docs
+
+      - name: Move docs files to root
+        run: | 
+          mv Hyrule-Compendium-node-client/docs/index.md ./index.md
+
+      - name: Push to docs branch
+        uses: ad-m/github-push-action@master
+        with: 
+          branch: docs
