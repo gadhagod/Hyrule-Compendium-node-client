@@ -39,7 +39,9 @@ jobs:
       - name: Move docs files to root
         run: | 
           ls
+          echo --------------
           mv Hyrule-Compendium-node-client/docs/index.md ./index.md
+          echo -------------
           ls
 
       - name: Push to docs branch
