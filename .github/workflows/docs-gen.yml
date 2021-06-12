@@ -38,7 +38,9 @@ jobs:
 
       - name: Move docs files to root
         run: | 
+          ls
           mv Hyrule-Compendium-node-client/docs/index.md ./index.md
+          ls
 
       - name: Push to docs branch
         uses: ad-m/github-push-action@master
