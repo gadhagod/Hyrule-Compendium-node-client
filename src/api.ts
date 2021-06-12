@@ -1,5 +1,6 @@
 import { NoEntryError, NoCategoryError } from "./exceptions";
 import { AllCallback, CategoryCallback, CreatureEntry, EntryCallback, EquipmentEntry, MaterialEntry, MonsterEntry, TreasureEntry, type_category, EntryType, EntryImage } from "./types"
+
 const https = require("https");
 import { Transform as Stream } from "stream";
 const fs = require("fs");
