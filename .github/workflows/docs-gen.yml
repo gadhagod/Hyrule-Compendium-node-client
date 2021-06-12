@@ -41,6 +41,7 @@ jobs:
           ls
           echo --------------
           mv Hyrule-Compendium-node-client/docs/index.md ./index.md
+          ls Hyrule-Compendium-node-client/docs
           echo -------------
           ls
 
