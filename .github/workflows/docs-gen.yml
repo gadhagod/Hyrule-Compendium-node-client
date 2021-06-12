@@ -23,7 +23,7 @@ jobs:
 
       - name: Clone master branch
         run: |
-          git clone https://github.com/gadhagod/Hyrule-Compendium-node-client
+          git clone https://github.com/gadhagod/Hyrule-Compendium-node-client -b doc-generator
 
       - name: Install dependencies
         run: |
