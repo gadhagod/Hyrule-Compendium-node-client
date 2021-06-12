@@ -5,7 +5,9 @@
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "prepublish": "tsc",
+    "build:docs": "jsdoc2md --files src/api.ts --configure docs/config.json > docs/index.md",
+    "build": "tsc",
+    "prepublish": "npm run build --silent",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -15,12 +17,18 @@
   "author": "Aarush Valaiya, Aarav Borthakur",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/goombamaui/Hyrule-Compendium-node-client/issues"
+    "url": "https://github.com/gadhagod/Hyrule-Compendium-node-client/issues"
   },
-  "homepage": "https://github.com/goombamaui/Hyrule-Compendium-node-client",
+  "homepage": "https://github.com/gadhagod/Hyrule-Compendium-node-client",
   "devDependencies": {
+    "@babel/cli": "^7.14.3",
+    "@babel/core": "^7.14.3",
+    "@babel/preset-env": "^7.14.4",
+    "@babel/preset-typescript": "^7.13.0",
+    "jsdoc-babel": "^0.5.0",
+    "jsdoc-to-markdown": "^7.0.1",
     "ts-node": "^10.0.0",
-    "typescript": "^3.3.3"
+    "typescript": "^3.9.9"
   },
   "files": [
     "dist/**/*"
