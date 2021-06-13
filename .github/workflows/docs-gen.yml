@@ -4,12 +4,8 @@ name: Generate Docs
 
 on:
   workflow_dispatch:
-  push:
-      branches:
-        - master
-        - doc-generator
-      paths:
-        - 'src/api.ts'
+  release:
+    types: [published]
 
 jobs:
   main:
