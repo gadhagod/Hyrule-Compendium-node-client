@@ -14,7 +14,7 @@
     "type": "git",
     "url": "git+https://github.com/gadhagod/Hyrule-Compendium-node-client.git"
   },
-  "author": "Aarush Valaiya, Aarav Borthakur",
+  "author": "Aarav Borthakur, Aarush Valaiya, and contributors",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/gadhagod/Hyrule-Compendium-node-client/issues"
