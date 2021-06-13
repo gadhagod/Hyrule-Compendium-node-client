@@ -23,7 +23,7 @@ jobs:
 
       - name: Clone master branch
         run: |
-          git clone https://github.com/gadhagod/Hyrule-Compendium-node-client -b doc-generator
+          git clone https://github.com/gadhagod/Hyrule-Compendium-node-client
 
       - name: Install dependencies
         run: |
@@ -35,12 +35,18 @@ jobs:
         run: |
           cd Hyrule-Compendium-node-client
           npm run build:docs
+          mv docs/index.md ../index.md
+          cd ..
 
-      - name: Move docs files to root
-        run: | 
-          mv Hyrule-Compendium-node-client/docs/index.md ./index.md
+      - name: Commit files
+        run: |
+          git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add .
+          git commit --allow-empty -m "Update docs"
 
       - name: Push to docs branch
         uses: ad-m/github-push-action@master
         with: 
           branch: docs
+          github_token: ${{ secrets.BOT_TOKEN }}
