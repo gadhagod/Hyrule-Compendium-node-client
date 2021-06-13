@@ -37,8 +37,6 @@ jobs:
           npm run build:docs
           mv docs/index.md ../index.md
           cd ..
-          echo -----
-          ls
 
       - name: Commit files
         run: |
