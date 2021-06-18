@@ -213,7 +213,7 @@ export interface CategoryCallback {
  * @param category_data API response of category
  * @returns {AnyCategory}
  */
-export function type_category(category_data: AnyCategory): AnyCategory {
+export function type_category(category_data: AnyCategory) {
     let res: any = []
     if (Object.keys(category_data).length===2) {
         res = category_data as {food: CreatureEntry[], non_food: CreatureEntry[]}
