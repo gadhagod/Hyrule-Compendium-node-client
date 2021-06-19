@@ -1,0 +1,6 @@
+{
+    "timeout": 20000,
+    "require": ["coffeescript/register"],
+    "ignore": "test/*.js",
+    "file": ["test/configure-url-test.coffee", "test/contents-test.coffee", "test/timeout-test.coffee"]
+}
