@@ -3,6 +3,12 @@ c = require('../dist/src')
 
 comp = new (c.compendium)
 
+comp.get_entry "horse", (entryData) ->
+    assert.deepStrictEqual entryData.common_locations, [
+        'Hyrule Field'
+        'Faron Grasslands'
+    ]
+
 ###*
 # Tests `AnyEntry` for correct data
 # @param {string} entryName
@@ -14,34 +20,32 @@ comp = new (c.compendium)
 # @param {string} expectedImage
 ###
 testBaseEntry = (entryName, expectedCategory, expectedCommonLocations, expectedDescription, expectedId, expectedName, expectedImage) ->
-    it 'Should have expected category ('.concat(expectedCategory, ')'), (done) ->
+    it 'Should have expected category', (done) ->
         comp.get_entry entryName, (entryData) ->
-            console.log entryData.category
-            console.log expectedCategory
             assert.strictEqual entryData.category, expectedCategory
             done()
 
-    it 'Should have expected common locations ('.concat(expectedCommonLocations, ')'), (done) ->
+    it 'Should have expected common locations', (done) ->
         comp.get_entry entryName, (entryData) ->
             assert.deepStrictEqual entryData.common_locations, expectedCommonLocations
             done()
 
-    it 'Should have expected description ('.concat(expectedDescription, ')'), (done) ->
+    it 'Should have expected description', (done) ->
         comp.get_entry entryName, (entryData) ->
             assert.strictEqual entryData.description, expectedDescription
             done()
 
-    it 'Should have expected ID ('.concat(expectedId, ')'), (done) ->
+    it 'Should have expected ID', (done) ->
         comp.get_entry entryName, (entryData) ->
             assert.strictEqual entryData.id, expectedId
             done()
 
-    it 'Should have expected name ('.concat(expectedName, ')'), (done) ->
+    it 'Should have expected name', (done) ->
         comp.get_entry entryName, (entryData) ->
             assert.strictEqual entryData.name, expectedName
             done()
 
-    it 'Should have expected image ('.concat(expectedImage, ')'), (done) ->
+    it 'Should have expected image', (done) ->
         comp.get_entry entryName, (entryData) ->
             assert.strictEqual entryData.image, expectedImage
             done()
@@ -55,17 +59,17 @@ testBaseEntry = (entryName, expectedCategory, expectedCommonLocations, expectedD
 ###
 testCreatureEntry = (entryName, expectedDrops, expectedHeartsRecovered, expectedCookingEffect) ->
     if expectedDrops
-        it 'Should have expected drops ('.concat(expectedDrops, ')'), (done) ->
+        it 'Should have expected drops', (done) ->
             comp.get_entry entryName, (entryData) ->
                 assert.deepStrictEqual entryData.drops, expectedDrops
                 done()
     if expectedHeartsRecovered
-        it 'Should have expected hearts recovered ('.concat(expectedHeartsRecovered, ')'), (done) ->
+        it 'Should have expected hearts recovered', (done) ->
             comp.get_entry entryName, (entryData) ->
                 assert.strictEqual entryData.hearts_recovered, expectedHeartsRecovered
                 done()
     if expectedCookingEffect
-        it 'Should have expected cooking effect ('.concat(expectedCookingEffect, ')'), (done) ->
+        it 'Should have expected cooking effect', (done) ->
             comp.get_entry entryName, (entryData) ->
                 assert.strictEqual entryData.cooking_effect, expectedCookingEffect
                 done()
@@ -77,12 +81,12 @@ testCreatureEntry = (entryName, expectedDrops, expectedHeartsRecovered, expected
 # @param {number} expectedDefense
 ###
 testEquipmentEntry = (entryName, expectedAttack, expectedDefense) ->
-    it 'Should have expected attack ('.concat(expectedAttack, ')'), (done) ->
+    it 'Should have expected attack', (done) ->
         comp.get_entry entryName, (entryData) ->
             assert.strictEqual entryData.attack, expectedAttack
             done()
 
-    it 'Should have expected defense ('.concat(expectedDefense, ')'), (done) ->
+    it 'Should have expected defense', (done) ->
         comp.get_entry entryName, (entryData) ->
             assert.strictEqual entryData.defense, expectedDefense
             done()
@@ -93,7 +97,7 @@ testEquipmentEntry = (entryName, expectedAttack, expectedDefense) ->
 # @param {number} expectedHeartsRecovered
 ###
 testMaterialEntry = (entryName, expectedHeartsRecovered) ->
-    it 'Should have expected hearts recovered ('.concat(expectedHeartsRecovered, ')'), (done) ->
+    it 'Should have expected hearts recovered', (done) ->
         comp.get_entry entryName, (entryData) ->
             assert.strictEqual entryData.hearts_recovered, expectedHeartsRecovered
             done()
@@ -104,7 +108,7 @@ testMaterialEntry = (entryName, expectedHeartsRecovered) ->
 # @param {number} expectedDrops
 ###
 testMonsterEntry = (entryName, expectedDrops) ->
-    it 'Should have expected drops ('.concat(expectedDrops, ')'), (done) ->
+    it 'Should have expected drops', (done) ->
         comp.get_entry entryName, (entryData) ->
             assert.deepStrictEqual entryData.drops, expectedDrops
             done()
@@ -115,7 +119,7 @@ testMonsterEntry = (entryName, expectedDrops) ->
 # @param {string[]} expectedDrops
 ###
 testTreasureEntry = (entryName, expectedDrops) ->
-    it 'Should have expected drops ('.concat(expectedDrops, ')'), (done) ->
+    it 'Should have expected drops', (done) ->
         comp.get_entry entryName, (entryData) ->
             assert.deepStrictEqual entryData.drops, expectedDrops
             done()
