@@ -1,5 +1,5 @@
 {
-    "file": ["test/contents-test.js"],
+    "file": ["test/contents-test.coffee", "test/timeout-test.coffee"],
     "timeout": 20000,
     "require": ["coffeescript/register", "ts-node/register"]
 }
