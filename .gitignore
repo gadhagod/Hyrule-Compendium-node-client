@@ -120,3 +120,6 @@ package-lock.json
 
 # docs
 docs/index.md
+
+# compiled JS from coffeescript
+test/*.js

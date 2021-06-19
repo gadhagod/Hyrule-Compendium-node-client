@@ -10,7 +10,8 @@
   },
   "exclude": [
     "node_modules",
-    "dist"
+    "dist",
+    "test"
   ],
   "strictNullChecks": false
 }
