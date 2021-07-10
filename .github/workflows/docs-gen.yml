@@ -29,6 +29,7 @@ jobs:
 
       - name: Build documentation
         run: |
+          rm -rf docs
           cd Hyrule-Compendium-node-client
           npm run build:docs
           mv docs ../
