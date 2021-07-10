@@ -119,7 +119,7 @@ dist
 package-lock.json
 
 # docs
-docs/index.md
+docs
 
 # compiled JS from coffeescript
 test/*.js

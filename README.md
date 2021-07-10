@@ -12,4 +12,4 @@ Install development build (not recommended):
     npm i git+https://github.com/gadhagod/Hyrule-Compendium-node-client.git
 
 ## Usage
-Check the [documentation](https://gadhagod.github.io/Hyrule-Compendium-API/#/client-libraries/node?id=node-wrapper) for guidance.
+Check the [documentation](https://gadhagod.github.io/Hyrule-Compendium-node-client) for guidance.
