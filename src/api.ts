@@ -23,8 +23,9 @@ const fs = require("fs");
  * @param {number} [default_timeout=20000] Default milliseconds to wait for response for all API calling functions until error
  */
 export class compendium {
-    url: string
-    default_timeout: number
+    private url: string
+    private default_timeout: number
+
     constructor(default_timeout=20000, url="https://botw-compendium.herokuapp.com/api/v2"){
         this.default_timeout=default_timeout
         this.url=url;
