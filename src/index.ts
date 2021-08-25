@@ -10,6 +10,7 @@ export {
     entryImageUrl,
     entryLocation,
     entryName,
+    BaseEntry,
     CreatureEntry, 
     EquipmentEntry, 
     MaterialEntry, 

@@ -1345,7 +1345,7 @@ export type entryCookingEffect =
 /**
  * @interface BaseEntry Contains attributes which all entries have
  */
-interface BaseEntry {
+export interface BaseEntry {
     /**
      * Name of the category of the entry
      * @type {entryCategory}
@@ -1373,7 +1373,7 @@ interface BaseEntry {
      * @memberof BaseEntry
      * @readonly
      */
-    readonly id: number
+    readonly id: entryId
     /**
      * Name of entry
      * @type {entryName}
