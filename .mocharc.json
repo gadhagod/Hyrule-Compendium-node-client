@@ -1,6 +1,5 @@
 {
     "timeout": 20000,
-    "require": ["coffeescript/register"],
-    "ignore": "test/*.js",
-    "file": ["test/configure-url-test.coffee", "test/contents-test.coffee", "test/timeout-test.coffee"]
+    "require": ["coffeescript/register", "ts-node/register"],
+    "file": ["test/configure-url-test.coffee", "test/contents-test.js", "test/timeout-test.coffee", "test/type-check.ts"]
 }

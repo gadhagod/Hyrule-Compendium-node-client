@@ -3,12 +3,6 @@ c = require('../dist')
 
 comp = new (c.compendium)
 
-comp.get_entry "horse", (entryData) ->
-    assert.deepStrictEqual entryData.common_locations, [
-        'Hyrule Field'
-        'Faron Grasslands'
-    ]
-
 ###*
 # Tests `AnyEntry` for correct data
 # @param {string} entryName
