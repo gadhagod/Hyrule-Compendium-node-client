@@ -24,11 +24,11 @@ const testBaseEntry = (entry: types.BaseEntry) => {
 const testCreatureEntry = (entry: types.CreatureEntry, subCategory: "food" | "non_food") => {
     if(subCategory === "food") {
         entry = entry as FoodSubCategory;
-        expectType<number | undefined>(entry.hearts_recovered as number);
-        expectType<types.entryCookingEffect | undefined>(entry.cooking_effect as types.entryCookingEffect);
+        expectType<number>(entry.hearts_recovered as number);
+        expectType<types.entryCookingEffect>(entry.cooking_effect as types.entryCookingEffect);
     } else {
         entry = entry as NonFoodSubCategory;
-        expectType<types.entryDrop[] | undefined>(entry.drops as []);
+        expectType<types.entryDrop[]>(entry.drops as []);
     }
 }
 
