@@ -1,5 +1,7 @@
 import { NoEntryError, NoCategoryError } from "./exceptions";
 import { 
+    entryName,
+    entryId,
     AllCallback, 
     CategoryCallback, 
     CreatureEntry, 
@@ -9,7 +11,6 @@ import {
     MonsterEntry, 
     TreasureEntry, 
     type_category, 
-    EntryType, 
     EntryImage
 } from "./types"
 
@@ -32,14 +33,14 @@ export class compendium {
     }
     /**
      * Gets an entry
-     * @param {EntryType} entry The entry to be retrieved
+     * @param {entryName | entryId} entry The entry to be retrieved
      * @param {EntryCallback} callback Function to be executed with API data
      * @param {number} [timeout=this.default_timeout] Time to wait for response before executing @param `error_callback`
      * @param {Function} [error_callback=(err)=>{throw(err)] Function to be executed on error
      * @throws {NoEntryError} Entry must exist
      */
     get_entry(
-        entry: EntryType, 
+        entry: entryName | entryId, 
         callback: EntryCallback, 
         timeout: number=this.default_timeout, 
         error_callback: Function=(err: any)=>{throw(err)}
@@ -131,10 +132,10 @@ export class compendium {
     }
     /**
      * Retrieves an entry image
-     * @param {EntryType} entry ID or name of entry
+     * @param {entryName | entryId} entry ID or name of entry
      * @returns {EntryImage} Image object
      */
-    get_entry_image(entry: EntryType): EntryImage {
+    get_entry_image(entry: entryName | entryId): EntryImage {
         return new EntryImage(this, entry)
     }
     /**
@@ -147,7 +148,7 @@ export class compendium {
      * @param {Function} [error_callback=(err)=>{throw(err)] Function to be executed on error
      */
     download_entry_image(
-        entry: EntryType, 
+        entry: entryName | entryId,
         output_file?: string, 
         callback: Function=()=>{},
         timeout: number=this.default_timeout, 

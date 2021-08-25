@@ -1,4 +1,4 @@
-import { EntryType } from "./types"
+import { entryName, entryId } from "./types"
 
 /**
  * Raised when a given category does not exist in the compendium
@@ -11,10 +11,10 @@ export class NoCategoryError extends Error {
 }
 /**
  * Raised when a given entry does not exist in the compendium
- * @param {EntryType} target_entry Non-existant input entry that causes error
+ * @param {entryName | entryId} target_entry Non-existant input entry that causes error
  */
 export class NoEntryError extends Error {
-    constructor(target_entry: EntryType){
+    constructor(target_entry: entryName | entryId){
         if (typeof(target_entry) == "number"){
             super("Entry with ID "+ String(target_entry) + " not found.")
         } else if (typeof(target_entry) == "string"){

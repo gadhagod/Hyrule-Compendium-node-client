@@ -3,6 +3,13 @@ export { compendium }
 export default compendium
 export { NoCategoryError, NoEntryError } from "./exceptions"
 export { 
+    entryCategory,
+    entryCookingEffect,
+    entryDrop,
+    entryId,
+    entryImageUrl,
+    entryLocation,
+    entryName,
     CreatureEntry, 
     EquipmentEntry, 
     MaterialEntry, 
@@ -14,6 +21,5 @@ export {
     CategoryCallback,
     EntryCallback,
     ImageGetStreamCallback,
-    EntryType,
     EntryImage
 } from "./types"
