@@ -1,5 +1,5 @@
 assert = require('assert')
-c = require('../dist/src')
+c = require('../dist')
 
 comp = new (c.compendium)
 

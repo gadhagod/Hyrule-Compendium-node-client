@@ -1,4 +1,4 @@
-c = require('../dist/src')
+c = require('../dist')
 
 describe 'Default timeout', ->
     comp = new (c.compendium)(0.01 / 99) # arbitrary tiny number

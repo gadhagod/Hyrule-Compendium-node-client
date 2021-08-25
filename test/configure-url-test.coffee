@@ -1,4 +1,4 @@
-c = require('../dist/src')
+c = require('../dist')
 assert = require('assert')
 comp = new (c.compendium)(undefined, 'https://botw-compendium.herokuapp.com/api/v1') # v1
 
