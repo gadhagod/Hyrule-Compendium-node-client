@@ -16,6 +16,7 @@ export {
     MaterialEntry, 
     MonsterEntry, 
     TreasureEntry,
+    EntryType,
     AnyEntry,
     AnyCategory,
     AllCallback,

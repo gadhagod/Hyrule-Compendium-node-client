@@ -1476,6 +1476,11 @@ export interface TreasureEntry extends BaseEntry {
     readonly drops: entryDrop[]
 }
 /**
+ * @deprecated Since v1.6.0. Use entryId | entryName
+ * @alias EntryType Represents the type of an entry
+ */
+export type EntryType = string | number
+/**
  * @alias AnyEntry Represents an entry of any category
  */
 export type AnyEntry = CreatureEntry | EquipmentEntry | MaterialEntry | MonsterEntry | TreasureEntry
@@ -1611,7 +1616,7 @@ export class EntryImage {
     }
     /**
      * Downloads the image of an entry
-     * @param {EntryType} entry ID or name of entry
+     * @param {entryName | entryId} entry ID or name of entry
      * @param {string} [output_file] File path of which image is to saved, default: "./[entry name].png"
      * @param {Function} [callback=(err)=>{throw err}] @param callback of https://nodejs.org/api/fs.html#fs_fs_writefile_file_data_options_callback
      * @param {number} timeout Time to wait for response before executing @param error_callback
