@@ -130,7 +130,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/gadhagod/Hyrule-Compendium-node-client/blob/9e9fb29/src/api.ts#L27">src/api.ts:27</a></li>
+									<li>Defined in <a href="https://github.com/gadhagod/Hyrule-Compendium-node-client/blob/45187c3/src/api.ts#L30">src/api.ts:30</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -155,7 +155,7 @@
 					<div class="tsd-signature tsd-kind-icon">default_<wbr>timeout<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/gadhagod/Hyrule-Compendium-node-client/blob/9e9fb29/src/api.ts#L27">src/api.ts:27</a></li>
+							<li>Defined in <a href="https://github.com/gadhagod/Hyrule-Compendium-node-client/blob/45187c3/src/api.ts#L28">src/api.ts:28</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -165,7 +165,7 @@
 					<div class="tsd-signature tsd-kind-icon">url<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/gadhagod/Hyrule-Compendium-node-client/blob/9e9fb29/src/api.ts#L26">src/api.ts:26</a></li>
+							<li>Defined in <a href="https://github.com/gadhagod/Hyrule-Compendium-node-client/blob/45187c3/src/api.ts#L27">src/api.ts:27</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -176,19 +176,19 @@
 					<a name="download_entry_image" class="tsd-anchor"></a>
 					<h3>download_<wbr>entry_<wbr>image</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">download_<wbr>entry_<wbr>image<span class="tsd-signature-symbol">(</span>entry<span class="tsd-signature-symbol">: </span><a href="../modules.html#entrytype" class="tsd-signature-type" data-tsd-kind="Type alias">EntryType</a>, output_file<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span>, callback<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">Function</span>, timeout<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span>, error_callback<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">Function</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+						<li class="tsd-signature tsd-kind-icon">download_<wbr>entry_<wbr>image<span class="tsd-signature-symbol">(</span>entry<span class="tsd-signature-symbol">: </span><a href="../modules.html#entryName" class="tsd-signature-type" data-tsd-kind="Type alias">entryName</a><span class="tsd-signature-symbol"> | </span><a href="../modules.html#entryId" class="tsd-signature-type" data-tsd-kind="Type alias">entryId</a>, output_file<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span>, callback<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">Function</span>, timeout<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span>, error_callback<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">Function</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/gadhagod/Hyrule-Compendium-node-client/blob/9e9fb29/src/api.ts#L149">src/api.ts:149</a></li>
+									<li>Defined in <a href="https://github.com/gadhagod/Hyrule-Compendium-node-client/blob/45187c3/src/api.ts#L150">src/api.ts:150</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<dl class="tsd-comment-tags">
 									<dt>deprecated</dt>
-									<dd><p>Since v1.5.0. Use compendium.entry_image.download()
+									<dd><p>Since v1.5.0. Use entry_image.download()
 										Downloads the image of an entry</p>
 									</dd>
 								</dl>
@@ -196,7 +196,7 @@
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>entry: <a href="../modules.html#entrytype" class="tsd-signature-type" data-tsd-kind="Type alias">EntryType</a></h5>
+									<h5>entry: <a href="../modules.html#entryName" class="tsd-signature-type" data-tsd-kind="Type alias">entryName</a><span class="tsd-signature-symbol"> | </span><a href="../modules.html#entryId" class="tsd-signature-type" data-tsd-kind="Type alias">entryId</a></h5>
 									<div class="tsd-comment tsd-typography">
 										<p>ID or name of entry</p>
 									</div>
@@ -225,13 +225,13 @@
 					<a name="get_all" class="tsd-anchor"></a>
 					<h3>get_<wbr>all</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">get_<wbr>all<span class="tsd-signature-symbol">(</span>callback<span class="tsd-signature-symbol">: </span><a href="../interfaces/allcallback.html" class="tsd-signature-type" data-tsd-kind="Interface">AllCallback</a>, timeout<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span>, error_callback<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">Function</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+						<li class="tsd-signature tsd-kind-icon">get_<wbr>all<span class="tsd-signature-symbol">(</span>callback<span class="tsd-signature-symbol">: </span><a href="../interfaces/AllCallback.html" class="tsd-signature-type" data-tsd-kind="Interface">AllCallback</a>, timeout<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span>, error_callback<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">Function</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/gadhagod/Hyrule-Compendium-node-client/blob/9e9fb29/src/api.ts#L111">src/api.ts:111</a></li>
+									<li>Defined in <a href="https://github.com/gadhagod/Hyrule-Compendium-node-client/blob/45187c3/src/api.ts#L112">src/api.ts:112</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -242,7 +242,7 @@
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>callback: <a href="../interfaces/allcallback.html" class="tsd-signature-type" data-tsd-kind="Interface">AllCallback</a></h5>
+									<h5>callback: <a href="../interfaces/AllCallback.html" class="tsd-signature-type" data-tsd-kind="Interface">AllCallback</a></h5>
 									<div class="tsd-comment tsd-typography">
 										<p>Function to be executed with all entries</p>
 									</div>
@@ -265,13 +265,13 @@
 					<a name="get_category" class="tsd-anchor"></a>
 					<h3>get_<wbr>category</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">get_<wbr>category<span class="tsd-signature-symbol">(</span>category<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">&quot;creatures&quot;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">&quot;equipment&quot;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">&quot;materials&quot;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">&quot;monsters&quot;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">&quot;treasure&quot;</span>, callback<span class="tsd-signature-symbol">: </span><a href="../interfaces/categorycallback.html" class="tsd-signature-type" data-tsd-kind="Interface">CategoryCallback</a>, timeout<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span>, error_callback<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">Function</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+						<li class="tsd-signature tsd-kind-icon">get_<wbr>category<span class="tsd-signature-symbol">(</span>category<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">&quot;creatures&quot;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">&quot;equipment&quot;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">&quot;materials&quot;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">&quot;monsters&quot;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">&quot;treasure&quot;</span>, callback<span class="tsd-signature-symbol">: </span><a href="../interfaces/CategoryCallback.html" class="tsd-signature-type" data-tsd-kind="Interface">CategoryCallback</a>, timeout<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span>, error_callback<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">Function</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/gadhagod/Hyrule-Compendium-node-client/blob/9e9fb29/src/api.ts#L83">src/api.ts:83</a></li>
+									<li>Defined in <a href="https://github.com/gadhagod/Hyrule-Compendium-node-client/blob/45187c3/src/api.ts#L84">src/api.ts:84</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -288,7 +288,7 @@
 									</div>
 								</li>
 								<li>
-									<h5>callback: <a href="../interfaces/categorycallback.html" class="tsd-signature-type" data-tsd-kind="Interface">CategoryCallback</a></h5>
+									<h5>callback: <a href="../interfaces/CategoryCallback.html" class="tsd-signature-type" data-tsd-kind="Interface">CategoryCallback</a></h5>
 									<div class="tsd-comment tsd-typography">
 										<p>Function to be executed with all entries in the category.</p>
 									</div>
@@ -308,13 +308,13 @@
 					<a name="get_entry" class="tsd-anchor"></a>
 					<h3>get_<wbr>entry</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">get_<wbr>entry<span class="tsd-signature-symbol">(</span>entry<span class="tsd-signature-symbol">: </span><a href="../modules.html#entrytype" class="tsd-signature-type" data-tsd-kind="Type alias">EntryType</a>, callback<span class="tsd-signature-symbol">: </span><a href="../interfaces/entrycallback.html" class="tsd-signature-type" data-tsd-kind="Interface">EntryCallback</a>, timeout<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span>, error_callback<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">Function</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+						<li class="tsd-signature tsd-kind-icon">get_<wbr>entry<span class="tsd-signature-symbol">(</span>entry<span class="tsd-signature-symbol">: </span><a href="../modules.html#entryName" class="tsd-signature-type" data-tsd-kind="Type alias">entryName</a><span class="tsd-signature-symbol"> | </span><a href="../modules.html#entryId" class="tsd-signature-type" data-tsd-kind="Type alias">entryId</a>, callback<span class="tsd-signature-symbol">: </span><a href="../interfaces/EntryCallback.html" class="tsd-signature-type" data-tsd-kind="Interface">EntryCallback</a>, timeout<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span>, error_callback<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">Function</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/gadhagod/Hyrule-Compendium-node-client/blob/9e9fb29/src/api.ts#L41">src/api.ts:41</a></li>
+									<li>Defined in <a href="https://github.com/gadhagod/Hyrule-Compendium-node-client/blob/45187c3/src/api.ts#L42">src/api.ts:42</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -330,13 +330,13 @@
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>entry: <a href="../modules.html#entrytype" class="tsd-signature-type" data-tsd-kind="Type alias">EntryType</a></h5>
+									<h5>entry: <a href="../modules.html#entryName" class="tsd-signature-type" data-tsd-kind="Type alias">entryName</a><span class="tsd-signature-symbol"> | </span><a href="../modules.html#entryId" class="tsd-signature-type" data-tsd-kind="Type alias">entryId</a></h5>
 									<div class="tsd-comment tsd-typography">
 										<p>The entry to be retrieved</p>
 									</div>
 								</li>
 								<li>
-									<h5>callback: <a href="../interfaces/entrycallback.html" class="tsd-signature-type" data-tsd-kind="Interface">EntryCallback</a></h5>
+									<h5>callback: <a href="../interfaces/EntryCallback.html" class="tsd-signature-type" data-tsd-kind="Interface">EntryCallback</a></h5>
 									<div class="tsd-comment tsd-typography">
 										<p>Function to be executed with API data</p>
 									</div>
@@ -356,13 +356,13 @@
 					<a name="get_entry_image" class="tsd-anchor"></a>
 					<h3>get_<wbr>entry_<wbr>image</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">get_<wbr>entry_<wbr>image<span class="tsd-signature-symbol">(</span>entry<span class="tsd-signature-symbol">: </span><a href="../modules.html#entrytype" class="tsd-signature-type" data-tsd-kind="Type alias">EntryType</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="entryimage.html" class="tsd-signature-type" data-tsd-kind="Class">EntryImage</a></li>
+						<li class="tsd-signature tsd-kind-icon">get_<wbr>entry_<wbr>image<span class="tsd-signature-symbol">(</span>entry<span class="tsd-signature-symbol">: </span><a href="../modules.html#entryName" class="tsd-signature-type" data-tsd-kind="Type alias">entryName</a><span class="tsd-signature-symbol"> | </span><a href="../modules.html#entryId" class="tsd-signature-type" data-tsd-kind="Type alias">entryId</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="EntryImage.html" class="tsd-signature-type" data-tsd-kind="Class">EntryImage</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/gadhagod/Hyrule-Compendium-node-client/blob/9e9fb29/src/api.ts#L137">src/api.ts:137</a></li>
+									<li>Defined in <a href="https://github.com/gadhagod/Hyrule-Compendium-node-client/blob/45187c3/src/api.ts#L138">src/api.ts:138</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -373,13 +373,13 @@
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>entry: <a href="../modules.html#entrytype" class="tsd-signature-type" data-tsd-kind="Type alias">EntryType</a></h5>
+									<h5>entry: <a href="../modules.html#entryName" class="tsd-signature-type" data-tsd-kind="Type alias">entryName</a><span class="tsd-signature-symbol"> | </span><a href="../modules.html#entryId" class="tsd-signature-type" data-tsd-kind="Type alias">entryId</a></h5>
 									<div class="tsd-comment tsd-typography">
 										<p>ID or name of entry</p>
 									</div>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="entryimage.html" class="tsd-signature-type" data-tsd-kind="Class">EntryImage</a></h4>
+							<h4 class="tsd-returns-title">Returns <a href="EntryImage.html" class="tsd-signature-type" data-tsd-kind="Class">EntryImage</a></h4>
 							<p>Image object</p>
 						</li>
 					</ul>
@@ -400,13 +400,13 @@
 						<a href="../modules.html#default" class="tsd-kind-icon">default</a>
 					</li>
 					<li class=" tsd-kind-class">
-						<a href="entryimage.html" class="tsd-kind-icon">Entry<wbr>Image</a>
+						<a href="EntryImage.html" class="tsd-kind-icon">Entry<wbr>Image</a>
 					</li>
 					<li class=" tsd-kind-class">
-						<a href="nocategoryerror.html" class="tsd-kind-icon">No<wbr>Category<wbr>Error</a>
+						<a href="NoCategoryError.html" class="tsd-kind-icon">No<wbr>Category<wbr>Error</a>
 					</li>
 					<li class=" tsd-kind-class">
-						<a href="noentryerror.html" class="tsd-kind-icon">No<wbr>Entry<wbr>Error</a>
+						<a href="NoEntryError.html" class="tsd-kind-icon">No<wbr>Entry<wbr>Error</a>
 					</li>
 				</ul>
 				<ul class="current">
@@ -442,40 +442,64 @@
 				</ul>
 				<ul class="after-current">
 					<li class=" tsd-kind-interface">
-						<a href="../interfaces/allcallback.html" class="tsd-kind-icon">All<wbr>Callback</a>
+						<a href="../interfaces/AllCallback.html" class="tsd-kind-icon">All<wbr>Callback</a>
 					</li>
 					<li class=" tsd-kind-interface">
-						<a href="../interfaces/categorycallback.html" class="tsd-kind-icon">Category<wbr>Callback</a>
+						<a href="../interfaces/BaseEntry.html" class="tsd-kind-icon">Base<wbr>Entry</a>
 					</li>
 					<li class=" tsd-kind-interface">
-						<a href="../interfaces/creatureentry.html" class="tsd-kind-icon">Creature<wbr>Entry</a>
+						<a href="../interfaces/CategoryCallback.html" class="tsd-kind-icon">Category<wbr>Callback</a>
 					</li>
 					<li class=" tsd-kind-interface">
-						<a href="../interfaces/entrycallback.html" class="tsd-kind-icon">Entry<wbr>Callback</a>
+						<a href="../interfaces/CreatureEntry.html" class="tsd-kind-icon">Creature<wbr>Entry</a>
 					</li>
 					<li class=" tsd-kind-interface">
-						<a href="../interfaces/equipmententry.html" class="tsd-kind-icon">Equipment<wbr>Entry</a>
+						<a href="../interfaces/EntryCallback.html" class="tsd-kind-icon">Entry<wbr>Callback</a>
 					</li>
 					<li class=" tsd-kind-interface">
-						<a href="../interfaces/imagegetstreamcallback.html" class="tsd-kind-icon">Image<wbr>Get<wbr>Stream<wbr>Callback</a>
+						<a href="../interfaces/EquipmentEntry.html" class="tsd-kind-icon">Equipment<wbr>Entry</a>
 					</li>
 					<li class=" tsd-kind-interface">
-						<a href="../interfaces/materialentry.html" class="tsd-kind-icon">Material<wbr>Entry</a>
+						<a href="../interfaces/ImageGetStreamCallback.html" class="tsd-kind-icon">Image<wbr>Get<wbr>Stream<wbr>Callback</a>
 					</li>
 					<li class=" tsd-kind-interface">
-						<a href="../interfaces/monsterentry.html" class="tsd-kind-icon">Monster<wbr>Entry</a>
+						<a href="../interfaces/MaterialEntry.html" class="tsd-kind-icon">Material<wbr>Entry</a>
 					</li>
 					<li class=" tsd-kind-interface">
-						<a href="../interfaces/treasureentry.html" class="tsd-kind-icon">Treasure<wbr>Entry</a>
+						<a href="../interfaces/MonsterEntry.html" class="tsd-kind-icon">Monster<wbr>Entry</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="../interfaces/TreasureEntry.html" class="tsd-kind-icon">Treasure<wbr>Entry</a>
 					</li>
 					<li class=" tsd-kind-type-alias">
-						<a href="../modules.html#anycategory" class="tsd-kind-icon">Any<wbr>Category</a>
+						<a href="../modules.html#AnyCategory" class="tsd-kind-icon">Any<wbr>Category</a>
 					</li>
 					<li class=" tsd-kind-type-alias">
-						<a href="../modules.html#anyentry" class="tsd-kind-icon">Any<wbr>Entry</a>
+						<a href="../modules.html#AnyEntry" class="tsd-kind-icon">Any<wbr>Entry</a>
 					</li>
 					<li class=" tsd-kind-type-alias">
-						<a href="../modules.html#entrytype" class="tsd-kind-icon">Entry<wbr>Type</a>
+						<a href="../modules.html#EntryType" class="tsd-kind-icon">Entry<wbr>Type</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="../modules.html#entryCategory" class="tsd-kind-icon">entry<wbr>Category</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="../modules.html#entryCookingEffect" class="tsd-kind-icon">entry<wbr>Cooking<wbr>Effect</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="../modules.html#entryDrop" class="tsd-kind-icon">entry<wbr>Drop</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="../modules.html#entryId" class="tsd-kind-icon">entry<wbr>Id</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="../modules.html#entryImageUrl" class="tsd-kind-icon">entry<wbr>Image<wbr>Url</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="../modules.html#entryLocation" class="tsd-kind-icon">entry<wbr>Location</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="../modules.html#entryName" class="tsd-kind-icon">entry<wbr>Name</a>
 					</li>
 				</ul>
 			</nav>
