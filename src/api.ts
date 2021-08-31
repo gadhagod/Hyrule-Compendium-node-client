@@ -139,7 +139,7 @@ export class compendium {
         return new EntryImage(this, entry)
     }
     /**
-     * @deprecated Since v1.5.0. Use compendium.entry_image.download()
+     * @deprecated Since v1.5.0. Use entry_image.download()
      * Downloads the image of an entry
      * @param {EntryType} entry ID or name of entry
      * @param {string} [output_file] File path of which image is to saved, default: "./[entry name].png"
