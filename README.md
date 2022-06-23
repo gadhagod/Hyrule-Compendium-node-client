@@ -13,3 +13,8 @@ Install development build (not recommended):
 
 ## Usage
 Check the [documentation](https://gadhagod.github.io/Hyrule-Compendium-node-client) for guidance.
+
+---
+
+Made with :heart: by [Aarav Borthakur](https://github.com/gadhagod) and [Aarush Vailaya](https://github.com/goombamaui).
+
